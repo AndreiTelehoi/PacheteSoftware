@@ -43,4 +43,3 @@ print("Dupa modificare: ", masini_toyota)
 
 
 
-
