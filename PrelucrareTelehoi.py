@@ -67,5 +67,26 @@ pret_maxim = df_masini["Pret"].max()
 print("Pretul maxim este: ", pret_maxim)
 
 pret_mediu = df_masini["Pret"].mean()
-print("Pretul maxim este: ", pret_mediu)
+print("Pretul maxim este: ", pret_mediu, "\n")
 
+# 7. Stergere de coloane si inregistrari
+
+# a) sa se stearga inregistrarea pentru modelul CH-R
+
+df_masini_fara_CHR = df_masini.set_index("Model")
+df_masini_fara_CHR = df_masini_fara_CHR.drop("C-HR", axis=0)
+print("Tabelul fara CH-R: \n", df_masini_fara_CHR, "\n")
+
+# b) sa se stearga coloana cu vanzarile de pe luna noiembrie
+
+df_masini_fara_noiembrie = df_masini.drop(columns="Noiembrie")
+print("Tabelul fara noiembrie: \n", df_masini_fara_noiembrie, "\n")
+
+# 9. Prelucrarea seturilor de date cu merge/join
+# Sa se realizeze un inner merge pentru tabelele comenzi si importatori, dupa numarul comenzii, astfel incat sa fie vizibile
+# numarul comenzii, modelul, cantitatea si numele importatorului
+
+df_comenzi = pd.read_csv("comenzi.csv")
+df_importatori = pd.read_csv("importatori.csv")
+df_combinat = pd.merge(df_comenzi, df_importatori[["Numar Comanda", "Nume"]], on="Numar Comanda")
+print(df_combinat)
