@@ -90,3 +90,6 @@ df_comenzi = pd.read_csv("comenzi.csv")
 df_importatori = pd.read_csv("importatori.csv")
 df_combinat = pd.merge(df_comenzi, df_importatori[["Numar Comanda", "Nume"]], on="Numar Comanda")
 print(df_combinat)
+
+
+
